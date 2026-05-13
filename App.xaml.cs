@@ -9,5 +9,6 @@ namespace FolderOrganiser;
 /// </summary>
 public partial class App : Application
 {
+
 }
 

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using FolderOrganiser.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,5 +20,18 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+    }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        var dialog = new Microsoft.Win32.OpenFolderDialog();
+        if (dialog.ShowDialog() == true)
+        {
+            // Cast the DataContext to your ViewModel and set the property
+            if (DataContext is CoreViewModel vm)
+            {
+                vm.Path = dialog.FolderName;
+            }
+        }
     }
 }

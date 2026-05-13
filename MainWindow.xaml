@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FolderOrganiser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Folder Organiser" Height="450" Width="800"
+        xmlns:vm="clr-namespace:FolderOrganiser.ViewModels">
+    <Window.DataContext>
+        <vm:CoreViewModel/>
+    </Window.DataContext>
     <Grid>
-
+        <Button Content="Choose Path" Click="Button_Click" Width="200" Height="75"></Button>
+        <TextBlock Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}" Height="50" Width="500"></TextBlock>
     </Grid>
 </Window>
