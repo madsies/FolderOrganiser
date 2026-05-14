@@ -11,7 +11,18 @@
         <vm:CoreViewModel/>
     </Window.DataContext>
     <Grid>
-        <Button Content="Choose Path" Click="Button_Click" Width="200" Height="75"></Button>
-        <TextBlock Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}" Height="50" Width="500"></TextBlock>
+        <Button Content="Choose Path" Click="Button_Click" Width="200" Height="75" Margin="10,10,590,349"/>
+        <TextBlock Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}" Height="50" Margin="215,23,10,361"/>
+        <StackPanel Margin="215,88,0,0">
+            <ItemsControl ItemsSource="{Binding Files}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBox Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}" 
+                         Margin="0,5" 
+                         FontSize="16"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </Window>

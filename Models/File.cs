@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FolderOrganiser.Models
 {
-    class FOFile
+    public class FOFile
     {
         public string Name { get; set; } = string.Empty;
         public string Path { get; set; } = string.Empty;

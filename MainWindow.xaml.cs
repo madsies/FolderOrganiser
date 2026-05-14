@@ -1,4 +1,6 @@
-﻿using FolderOrganiser.ViewModels;
+﻿using FolderOrganiser.Models;
+using FolderOrganiser.ViewModels;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +24,7 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
+    // Open Folder Button
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new Microsoft.Win32.OpenFolderDialog();
@@ -31,6 +34,8 @@ public partial class MainWindow : Window
             if (DataContext is CoreViewModel vm)
             {
                 vm.Path = dialog.FolderName;
+
+                vm.registerFiles(Directory.GetFiles(vm.Path).ToList());
             }
         }
     }
