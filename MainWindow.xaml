@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FolderOrganiser"
+        Icon="/assets/logo.ico"
         mc:Ignorable="d"
         Title="Folder Organiser" Height="450" Width="800"
         xmlns:vm="clr-namespace:FolderOrganiser.ViewModels"
@@ -24,8 +25,9 @@
             <ColumnDefinition Width="0.25*"/>
             <ColumnDefinition Width="0.75*"/>
         </Grid.ColumnDefinitions>
+        
         <Button Content="Choose Path" Click="Button_Click" Grid.Row="0" Grid.Column="0"/>
-        <TextBlock Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"/>
+        <TextBlock Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center"/>
         <ListView  x:Name="ListStack" ItemsSource="{Binding Files}" Grid.Row="1" Grid.Column="1">
             <ListView.View>
                 <GridView>
