@@ -30,7 +30,6 @@ public partial class MainWindow : Window
         var dialog = new Microsoft.Win32.OpenFolderDialog();
         if (dialog.ShowDialog() == true)
         {
-            // Cast the DataContext to your ViewModel and set the property
             if (DataContext is CoreViewModel vm)
             {
                 vm.Path = dialog.FolderName;

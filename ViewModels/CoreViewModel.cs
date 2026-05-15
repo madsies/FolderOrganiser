@@ -14,16 +14,6 @@ namespace FolderOrganiser.ViewModels
         public partial String Path { get; set; } = String.Empty;
         [ObservableProperty]
         public partial ObservableCollection<FOFile> Files { get; set; } = new ObservableCollection<FOFile>();
-
-        [ObservableProperty]
-        private ObservableCollection<FileItem> _files = new();
-
-        [RelayCommand]
-        private void AddFile()
-        {
-            _files.Add(new FileItem { FileName = "NewFile.txt" });
-        }
-
         public CoreViewModel()
         {
             _fs = new FileService();
@@ -35,7 +25,13 @@ namespace FolderOrganiser.ViewModels
             {
                 _fs.AddFile(f);
             }
-            Files = new ObservableCollection<FOFile>(_fs.files); 
+
+
+            Files.Clear();
+            foreach (var file in _fs.files)
+            {
+                Files.Add(file);
+            }
         }
     }
 

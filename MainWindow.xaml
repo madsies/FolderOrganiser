@@ -11,18 +11,26 @@
         <vm:CoreViewModel/>
     </Window.DataContext>
     <Grid>
-        <Button Content="Choose Path" Click="Button_Click" Width="200" Height="75" Margin="10,10,590,349"/>
-        <TextBlock Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}" Height="50" Margin="215,23,10,361"/>
-        <StackPanel Margin="215,88,0,0">
-            <ItemsControl ItemsSource="{Binding Files}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBox Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}" 
-                         Margin="0,5" 
-                         FontSize="16"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="0.75*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Choose Path" Click="Button_Click" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"/>
+        <ListView  x:Name="ListStack" ItemsSource="{Binding Files}" Grid.Row="1" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="250" />
+                    <GridViewColumn Header="Extension" DisplayMemberBinding="{Binding Extension}" Width="80" />
+                    <GridViewColumn Header="Size (bytes)" DisplayMemberBinding="{Binding FileSize}" Width="100" />
+                    <GridViewColumn Header="Last Edited" DisplayMemberBinding="{Binding LastEdited, StringFormat={}{0:g}}" Width="150" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

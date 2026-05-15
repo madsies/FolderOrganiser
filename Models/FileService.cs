@@ -18,7 +18,7 @@ namespace FolderOrganiser.Models
             newFile.TimeCreated = fileInfo.CreationTime;
             newFile.LastEdited = fileInfo.LastWriteTime;
             newFile.FileSize = (int) fileInfo.Length;
-            files.Append(newFile);
+            files.Add(newFile);
             Console.WriteLine("File added");
         }
 
