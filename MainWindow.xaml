@@ -6,10 +6,14 @@
         xmlns:local="clr-namespace:FolderOrganiser"
         mc:Ignorable="d"
         Title="Folder Organiser" Height="450" Width="800"
-        xmlns:vm="clr-namespace:FolderOrganiser.ViewModels">
+        xmlns:vm="clr-namespace:FolderOrganiser.ViewModels"
+        xmlns:conv="clr-namespace:FolderOrganiser.Converters">
     <Window.DataContext>
         <vm:CoreViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <conv:FileSizeConverter x:Key="FileSizeConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -27,7 +31,7 @@
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="250" />
                     <GridViewColumn Header="Extension" DisplayMemberBinding="{Binding Extension}" Width="80" />
-                    <GridViewColumn Header="Size (bytes)" DisplayMemberBinding="{Binding FileSize}" Width="100" />
+                    <GridViewColumn Header="Size" DisplayMemberBinding="{Binding FileSize, Converter={StaticResource FileSizeConverter}}" Width="100" />
                     <GridViewColumn Header="Last Edited" DisplayMemberBinding="{Binding LastEdited, StringFormat={}{0:g}}" Width="150" />
                 </GridView>
             </ListView.View>
