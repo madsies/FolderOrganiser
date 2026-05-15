@@ -38,4 +38,9 @@ public partial class MainWindow : Window
             }
         }
     }
+
+    private void Settings_Click(object sender, RoutedEventArgs e)
+    {
+        MessageBox.Show("Settings button clicked!");
+    }
 }

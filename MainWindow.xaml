@@ -28,7 +28,13 @@
         
         <Button Content="Choose Path" Click="Button_Click" Grid.Row="0" Grid.Column="0"/>
         <TextBlock Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center"/>
-        <ListView  x:Name="ListStack" ItemsSource="{Binding Files}" Grid.Row="1" Grid.Column="1">
+        <ListView x:Name="SideBar" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Stretch">
+            <Button Content="Organise"></Button>
+            <Button Content="Test"></Button>
+            <Button Content="Settings" Click="Settings_Click"></Button>
+        </ListView>
+        
+        <ListView  x:Name="ListStack" ItemsSource="{Binding Files}" Grid.Row="1" Grid.Column="1" Grid.RowSpan="10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="250" />

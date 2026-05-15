@@ -21,6 +21,7 @@ namespace FolderOrganiser.ViewModels
 
         public void registerFiles(List<string> filePaths)
         {
+            _fs.wipeFiles();
             foreach (string f in filePaths)
             {
                 _fs.AddFile(f);

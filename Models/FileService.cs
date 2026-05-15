@@ -26,5 +26,10 @@ namespace FolderOrganiser.Models
         {
             files.RemoveAll(f => f.Path == fileName);
         }
+
+        public void wipeFiles()
+        {
+            files.Clear();
+        }
     }
 }
