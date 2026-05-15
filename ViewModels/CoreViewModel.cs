@@ -2,10 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using FolderOrganiser.Models;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace FolderOrganiser.ViewModels
 {
-    
+
     public partial class CoreViewModel : ObservableObject
     {
         private FileService _fs;
@@ -21,24 +22,44 @@ namespace FolderOrganiser.ViewModels
 
         public void registerFiles(List<string> filePaths)
         {
-            _fs.wipeFiles();
+            _fs.wipeFiles(); // Wipes prev files 
             foreach (string f in filePaths)
             {
                 _fs.AddFile(f);
             }
 
+            fillPublicArray();
+        }
+
+        public void registerSubFolders(List<string> folderPaths)
+        {
+            _fs.wipeFolder();
+            foreach (string f in folderPaths)
+            {
+                _fs.AddFolder(f);
+            }
 
             Files.Clear();
+            fillPublicArray();
+        }
+
+        private void fillPublicArray()
+        {
+            Files.Clear();
+            foreach (var folder in _fs.subFolders)
+            {
+                Files.Add(folder);
+            }
             foreach (var file in _fs.files)
             {
                 Files.Add(file);
             }
         }
-    }
 
-    public partial class FileItem : ObservableObject
-    {
-        [ObservableProperty]
-        private string _fileName = "";
+        public partial class FileItem : ObservableObject
+        {
+            [ObservableProperty]
+            private string _fileName = "";
+        }
     }
 }

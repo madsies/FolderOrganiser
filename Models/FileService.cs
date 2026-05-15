@@ -7,6 +7,7 @@ namespace FolderOrganiser.Models
     public class FileService
     {
         public List<FOFile> files = new List<FOFile>();
+        public List<FOFile> subFolders = new List<FOFile>();
         public void AddFile(String fileName)
         {
             // Update the file's properties based on its path
@@ -22,6 +23,18 @@ namespace FolderOrganiser.Models
             Console.WriteLine("File added");
         }
 
+        public void AddFolder(String folderName)
+        {
+            var folderInfo = new System.IO.DirectoryInfo(folderName);
+            FOFile newFolder = new FOFile();
+            newFolder.Name = folderInfo.Name;
+            newFolder.Path = folderInfo.FullName;
+            newFolder.Extension = "folder";
+            newFolder.TimeCreated = folderInfo.CreationTime;
+            newFolder.LastEdited = folderInfo.LastWriteTime;
+            subFolders.Add(newFolder);
+        }
+
         public void RemoveFile(String fileName)
         {
             files.RemoveAll(f => f.Path == fileName);
@@ -30,6 +43,11 @@ namespace FolderOrganiser.Models
         public void wipeFiles()
         {
             files.Clear();
+        }
+
+        public void wipeFolder()
+        {
+            subFolders.Clear();
         }
     }
 }

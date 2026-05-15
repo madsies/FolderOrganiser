@@ -33,10 +33,10 @@
             <Button Content="Test"></Button>
             <Button Content="Settings" Click="Settings_Click"></Button>
         </ListView>
-        
-        <ListView  x:Name="ListStack" ItemsSource="{Binding Files}" Grid.Row="1" Grid.Column="1" Grid.RowSpan="10">
+
+        <ListView  x:Name="ListStack" ItemsSource="{Binding Files}" Grid.Row="1" Grid.Column="1" Grid.RowSpan="10" GridViewColumnHeader.Click="ColumnHeaderClickedHandler">
             <ListView.View>
-                <GridView>
+                <GridView AllowsColumnReorder="True" >
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="250" />
                     <GridViewColumn Header="Extension" DisplayMemberBinding="{Binding Extension}" Width="80" />
                     <GridViewColumn Header="Size" DisplayMemberBinding="{Binding FileSize, Converter={StaticResource FileSizeConverter}}" Width="100" />
